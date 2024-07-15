@@ -6,6 +6,7 @@ import Grid from '@mui/material/Grid';
 import { Container, Typography } from '@mui/material';
 
  const About=()=>{
+
     const Img=styled('img')({
         //width:'100%',
         height:'auto',
@@ -14,13 +15,18 @@ import { Container, Typography } from '@mui/material';
         justifyContent:'center',
         margin:'auto'
     });
-
+    const ProfileImg=styled('img')({
+        borderRadius:'100%',
+        margin:'1%',
+        width:'30%',
+        border:'solid'
+    });
 
     return (
       <Container maxWidth={"false"}>
         <section id="about">
           <Typography variant="h3">About Us</Typography>
-          <Grid container rowSpacing={4}>
+          <Grid container rowSpacing={4} >
             <Grid item xs={12} md={6} display={"flex"}>
               <Img src="./plant.png" maxWidth={"600px"} />
             </Grid>
@@ -38,7 +44,7 @@ import { Container, Typography } from '@mui/material';
               the benefits of a greener lifestyle.
               </Typography>
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={6} rowSpacing={4}>
             <Typography variant="h3">Our Services</Typography>
             <Typography variant="body1">
             we offer a variety of services designed to help you cultivate 
@@ -51,15 +57,71 @@ import { Container, Typography } from '@mui/material';
           <Grid item xs={12} md={6} display={'flex'}>
             <Img src="/plant.png" alt="aboutimg" maxWidth={'600px'} />
           </Grid>
-          <Grid item xs={12} md={6}>
-            <Typography variant='h3'>Team Members</Typography>
+
+        </Grid>
+        <Grid container >
+          <Grid item xs={12} md={12}>
+    
+            <Typography variant='h3'>Meet Our Team</Typography>
 
           </Grid>
-          <Grid item xs={12} md={3}>
-            
+          
+          <Grid item xs={12} md={3} style={{border:'solid',textAlign:'center',margin:'1%'}}>
+                
+                <ProfileImg src='./plant.png' />
+                <Typography variant='h6' color={'green'}>Hailey Vincez</Typography>
+                <Typography variant='h6'>Founder & CEO</Typography>
           </Grid>
-
-
+          <Grid item xs={12} md={3} style={{border:'solid',textAlign:'center',margin:'1%'}}>
+                
+                <ProfileImg src='./plant.png' />
+                <Typography variant='h6' color={'green'}>Pamali Weerasinghe</Typography>
+                <Typography variant='h6'>Sales Manager</Typography>
+          </Grid>
+          <Grid item xs={12} md={3} style={{border:'solid',textAlign:'center',margin:'1%'}}>
+                
+                <ProfileImg src='./plant.png' />
+                <Typography variant='h6' color={'green'}>Pamali Weerasinghe</Typography>
+                <Typography variant='h6'>Sales Manager</Typography>
+          </Grid>
+        </Grid>
+        
+        
+          <Typography variant='h3'>Availabilities</Typography>
+          
+          <Grid container textAlign={'center'}>
+          <Grid item xs={12} md={2} style={{border:'solid',textAlign:'center',margin:'1%'}}>
+                
+                <ProfileImg src='./plant.png' />
+                <Typography variant='h6' color={'green'}>Pamali Weerasinghe</Typography>
+                <Typography variant='h6'>Sales Manager</Typography>
+          </Grid>
+          <Grid item xs={12} md={2} style={{border:'solid',textAlign:'center',margin:'1%'}}>
+                
+                <ProfileImg src='./plant.png' />
+                <Typography variant='h6' color={'green'}>Pamali Weerasinghe</Typography>
+                <Typography variant='h6'>Sales Manager</Typography>
+          </Grid>
+          <Grid item xs={12} md={2} style={{border:'solid',textAlign:'center',margin:'1%'}}>
+                
+                <ProfileImg src='./plant.png' />
+                <Typography variant='h6' color={'green'}>Pamali Weerasinghe</Typography>
+                <Typography variant='h6'>Sales Manager</Typography>
+          </Grid>
+          <Grid item xs={12} md={2} style={{border:'solid',textAlign:'center',margin:'1%'}}>
+                
+                <ProfileImg src='./plant.png' />
+                <Typography variant='h6' color={'green'}>Pamali Weerasinghe</Typography>
+                <Typography variant='h6'>Sales Manager</Typography>
+          </Grid>
+          <Grid item xs={12} md={2} style={{border:'solid',textAlign:'center',margin:'1%'}}>
+                
+                <ProfileImg src='./plant.png' />
+                <Typography variant='h6' color={'green'}>Pamali Weerasinghe</Typography>
+                <Typography variant='h6'>Sales Manager</Typography>
+          </Grid>
+          
+          
           </Grid>
         </section>
       </Container>
