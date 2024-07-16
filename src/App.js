@@ -1,16 +1,21 @@
 import React from "react";
-import { Parent } from "./components/Provider";
-import ChildComponent from "./components/Child";
 import Home from "./components/Home";
 import About from "./components/About";
-
+import { NavBar } from "./components/NavBar";
+import { ThemeProvider } from "./context/ThemeContext";
+import { CssBaseline } from "@mui/material";
+import ContactUs from "./components/ContactUs";
 function App() {
   return (
-    <Parent>
-      <ChildComponent/>
+    <ThemeProvider>
+      <CssBaseline>
+        <NavBar/>
       <Home/>
       <About/>
-    </Parent>
+      <ContactUs/>
+      </CssBaseline>
+    </ThemeProvider>
+      
   );
 }
 

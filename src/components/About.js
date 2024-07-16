@@ -21,6 +21,10 @@ import { Container, Typography } from '@mui/material';
         width:'30%',
         border:'solid'
     });
+    const Section = styled(Box)(({ theme }) => ({
+      padding: theme.spacing(8, 0),
+
+    }));
 
     return (
       <Container maxWidth={"false"}>
@@ -84,12 +88,14 @@ import { Container, Typography } from '@mui/material';
                 <Typography variant='h6' color={'green'}>Pamali Weerasinghe</Typography>
                 <Typography variant='h6'>Sales Manager</Typography>
           </Grid>
+          
         </Grid>
         
         
           <Typography variant='h3'>Availabilities</Typography>
           
           <Grid container textAlign={'center'}>
+            
           <Grid item xs={12} md={2} style={{border:'solid',textAlign:'center',margin:'1%'}}>
                 
                 <ProfileImg src='./plant.png' />

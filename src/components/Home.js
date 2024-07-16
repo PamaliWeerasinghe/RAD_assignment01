@@ -7,7 +7,8 @@ import { Container, Typography } from '@mui/material';
 
 
 export default function Home() {
-    const Item = styled('div')(({ theme }) => ({
+    
+    const Item = styled('item')(({ theme }) => ({
         backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
         //border: '1px solid',
         borderColor: theme.palette.mode === 'dark' ? '#444d58' : '#ced7e0',
@@ -25,18 +26,27 @@ export default function Home() {
         <Section id='home'>
         <Grid container  >
             <Grid sx={{
-                bgcolor:'success.main',
+                //bgcolor:'success.main',
                 width:'100%',
                 display:'flex',
                 flexDirection:'row'
             }} >
-                <Grid item xs={12} md={6} sx={{ bgcolor: 'primary.main',display:'flex',flex:'1' ,justifyContent:'center',alignItems:'center'}}>
+                <Grid item xs={12} md={6} sx={{ 
+                    //bgcolor: 'primary.main',
+                    display:'flex',
+                    flex:'1' ,
+                    justifyContent:'center',
+                    alignItems:'center'}}>
                 <Typography variant='h5' textAlign={'center'}>
                 Welcome to GreenLeaf Gardens, your go-to destination for 
                 all things green and beautiful!
                 </Typography>
                 </Grid>
-                <Grid item xs={12} md={6} sx={{ bgcolor: 'secondary.main' ,display:'flex',flex:'1'}}>
+                <Grid item xs={12} md={6} sx={{ 
+                    //bgcolor: 'secondary.main' ,
+                    display:'flex',
+                    flex:'1'
+                    }}>
                     <img src='./plant.png'/>
                 </Grid>
 
