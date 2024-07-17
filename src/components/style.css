@@ -1,0 +1,18 @@
+/* To change the colour of the scrollbar */
+body::-webkit-scrollbar {
+    width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+    background:#568203;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color:#436b2c;
+    border-radius: 1px;
+    border: 1px solid #436b2c;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background:#568203;
+}

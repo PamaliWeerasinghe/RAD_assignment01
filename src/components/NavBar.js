@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { ThemeContext } from '../context/ThemeContext';
 import { AppBar, Button, Grid, Box, Drawer, IconButton, List, ListItem, ListItemText, Typography } from '@mui/material';
 
-export const NavBar = () => {
+const NavBar = () => {
     const { theme, toggleTheme } = useContext(ThemeContext);
     return (
         <AppBar>
@@ -12,3 +12,4 @@ export const NavBar = () => {
         </AppBar>
   )
 }
+export default NavBar;

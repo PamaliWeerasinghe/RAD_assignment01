@@ -26,10 +26,10 @@ export const lightTheme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          backgroundColor: '#0088ffd1', // Custom button color
+          backgroundColor: '#85bb65', // Custom button color
           color: '#ffffff', // Text color for button
           '&:hover': {
-            backgroundColor: '#005b9f', // Custom hover color
+            backgroundColor: '#568203', // Custom hover color
           },
         },
       },
@@ -49,7 +49,7 @@ export const darkTheme = createTheme({
       main: '#ff4081', // Custom secondary color
     },
     background: {
-      default: '#070F2B', // Default background color
+      default: '#123524', // Default background color
     },
     appBar: {
       main: '#02091d', // Custom AppBar color
@@ -60,10 +60,10 @@ export const darkTheme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          backgroundColor: '#0088ffd1', // Custom button color
+          backgroundColor: '#85bb65', // Custom button color
           color: '#ffffff', // Text color for button
           '&:hover': {
-            backgroundColor: '#005b9f', // Custom hover color
+            backgroundColor: '#568203', // Custom hover color
           },
         },
       },
