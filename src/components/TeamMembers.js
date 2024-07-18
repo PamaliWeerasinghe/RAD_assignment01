@@ -1,12 +1,34 @@
 import * as React from "react";
-import { styled } from "@mui/material/styles";
+import { styled, keyframes } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import { Container, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import { Link, Outlet } from "react-router-dom";
+
 const TeamMembers = () => {
+  // Define keyframes for animations
+  const fadeIn = keyframes`
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  `;
+
+  const slideIn = keyframes`
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  `;
+
   const Img = styled("img")({
     width: "100%",
     height: "auto",
@@ -14,23 +36,27 @@ const TeamMembers = () => {
     itemAlign: "right",
     justifyContent: "center",
     margin: "auto",
+    animation: `${fadeIn} 2s ease-in-out`,
   });
+
   const ProfileImg = styled("img")({
-    //borderRadius:'100%',
     margin: "1%",
     width: "30%",
-    //border:'solid'
+    animation: `${slideIn} 1s ease-out`,
   });
+
   const Section = styled(Box)(({ theme }) => ({
     padding: theme.spacing(8, 0),
+    animation: `${fadeIn} 1.5s ease-in-out`,
   }));
 
   return (
     <Container maxWidth={"false"}>
       <Section id="about">
-        <Typography variant="h4" style={{fontWeight:'bolder'}}>MEET OUR TEAM</Typography>
+        <Typography variant="h4" style={{ fontWeight: "bolder" }}>
+          MEET OUR TEAM
+        </Typography>
 
-        {/* </Grid> */}
         <Grid
           container
           style={{
@@ -44,7 +70,6 @@ const TeamMembers = () => {
             xs={12}
             md={3}
             style={{
-              // border:'solid',
               textAlign: "center",
               margin: "1%",
             }}
@@ -77,11 +102,12 @@ const TeamMembers = () => {
             <Typography variant="h6" color={"green"}>
               Georginia Fernandaz
             </Typography>
-            <Typography variant="h6">Custoner Service</Typography>
+            <Typography variant="h6">Customer Service</Typography>
           </Grid>
         </Grid>
       </Section>
     </Container>
   );
 };
+
 export default TeamMembers;
