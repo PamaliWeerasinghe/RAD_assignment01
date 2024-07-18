@@ -57,9 +57,14 @@ React.useEffect(()=>{
                         item 
                         xs={12} 
                         md={6} 
-                        style={{textAlign:'left'}}
+                        style={{textAlign:'center'}}
                     >   
-                    
+                          <Typography variant="h3" style={{marginTop:'2%',fontWeight:'bolder'}}>
+                            GreenLeaf Gardens
+                        </Typography>
+                        <Typography variant="h5" style={{marginTop:'2%',fontWeight:'bold',fontStyle:'italic'}}>
+                            Your Go-To Destination For All Things Green and Beautiful!
+                        </Typography>
                         <Typography variant="h6"  style={{marginTop:'2%',fontWeight:'bold'}}>{welcomeMessage}</Typography>
                         <Typography variant="h4" style={{marginTop:'3%',fontWeight:'bolder'}}>
                             WELCOME {name}
@@ -73,12 +78,7 @@ React.useEffect(()=>{
                             fullWidth
                             sx={{ my: 2 }}
                         />
-                        <Typography variant="h3" style={{marginTop:'2%',fontWeight:'bolder'}}>
-                            GreenLeaf Gardens
-                        </Typography>
-                        <Typography variant="h5" style={{marginTop:'2%',fontWeight:'bold'}}>
-                            Your Go-To Destination For All Things Green and Beautiful!
-                        </Typography>
+                      
                         <Typography style={{marginTop:'2%'}}>{currentTime}</Typography>
                         <Link to={"contact"}>
                         <Button variant="contained" endIcon={<ArrowForwardIosIcon />} style={{width:'40%',marginTop:'5%'}}>
@@ -96,6 +96,7 @@ React.useEffect(()=>{
                              backgroundPosition:'54% 0',
                             alignItems:'center',
                             justifyContent:'center'
+                            
                         }}
                     >
                         <Img 
