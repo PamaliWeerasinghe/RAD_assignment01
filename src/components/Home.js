@@ -7,26 +7,42 @@ import Button from '@mui/material/Button';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { Link } from 'react-router-dom';
 
+const Section = styled(Box)(({ theme }) => ({
+    padding: theme.spacing(12, 0), // Default padding
+    [theme.breakpoints.up('md')]: {
+        padding: theme.spacing(6, 0), // Padding for medium and up
+    },
+}));
+
 export default function Home() {
     const [name, setName] = React.useState('');
     const [welcomeMessage, setWelcomeMessage] = React.useState('Welcome to GreenLeaf Gardens!');
+    const [currentTime, setCurrentTime] = React.useState(new Date().toLocaleTimeString());
 
   React.useEffect(() => {
     const hours = new Date().getHours();
     const greeting = hours < 12 ? 'Morning' : hours < 18 ? 'Afternoon' : 'Evening';
     setWelcomeMessage(`Good ${greeting}!`);
-  }, []);
+
+    const timer = setInterval(() => {
+        setCurrentTime(new Date().toLocaleTimeString());
+    }, 1000);
+
+    return () => clearInterval(timer);
+    }, []);
+    
+    
     return (
         <Container maxWidth="false">
-            <section id="home">
+            <Section id="home">
                 <Grid 
                     container 
                     rowSpacing={4}
                     sx={{
-                        backgroundImage: 'url(./blob.svg)',
-                        backgroundSize: '50%',
+                        
+                        // backgroundSize: '50%',
                         backgroundRepeat: 'no-repeat',
-                        backgroundPosition: '85% 0',
+                        backgroundPosition: '100% 0',
                         width: '100%',
                         height: '100vh',
                         //display: 'flex',
@@ -58,12 +74,13 @@ export default function Home() {
                             fullWidth
                             sx={{ my: 2 }}
                         />
-                        <Typography variant="h2">
+                        <Typography variant="h3">
                             GreenLeaf Gardens
                         </Typography>
                         <Typography variant="h5">
                             Your Go-To Destination For All Things Green and Beautiful!
                         </Typography>
+                        <Typography></Typography>
                         <Link to={"contact"}>
                         <Button variant="contained" endIcon={<ArrowForwardIosIcon />} style={{width:'100%',marginTop:'5%'}}>
                           Contact Us
@@ -78,16 +95,17 @@ export default function Home() {
                             display: 'flex',
                             justifyContent: 'center',
                             alignItems: 'center',
+                            backgroundImage: 'url(./blob.svg)',
                         }}
                     >
                         <img 
                             src="./plant.png" 
                             style={{ width: '100%' }} 
-                            sx={{ maxWidth: { xs: '300px', sm: '400px', md: '450px' } }}
+                            sx={{ maxWidth: { xs: '200px', sm: '400px', md: '450px' } }}
                         />
                     </Grid>
                 </Grid>
-            </section>
+            </Section>
         </Container>
     );
 }

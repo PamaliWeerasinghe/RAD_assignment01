@@ -1,7 +1,7 @@
 import React from "react";
 import Home from "./components/Home";
 import About from "./components/About";
-import NavBar from "./components/NavBar";
+
 import NavBar2 from "./components/NavBar2";
 import { ThemeProvider } from "./context/ThemeContext";
 import { CssBaseline } from "@mui/material";
@@ -18,7 +18,7 @@ function App() {
     <ThemeProvider>
       <CssBaseline />
       <Router>
-        {/* <NavBar /> */}
+        
         <NavBar2/>
         <Routes>
           <Route path="/" element={<Home />} />

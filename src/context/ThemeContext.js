@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import { createTheme, ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 
@@ -9,10 +9,10 @@ export const lightTheme = createTheme({
   palette: {
     mode: 'light',
     primary: {
-      main: '#0088ffd1', // Custom primary color
+      main: '#568203', // Custom primary color
     },
     secondary: {
-      main: '#f50057', // Custom secondary color
+      main: '#85bb65', // Custom secondary color
     },
     background: {
       default: '#ffffff', // Default background color
@@ -43,10 +43,10 @@ export const darkTheme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: '#0088ffd1', // Custom primary color
+      main: '#85bb65', // Custom primary color
     },
     secondary: {
-      main: '#ff4081', // Custom secondary color
+      main: '#568203', // Custom secondary color
     },
     background: {
       default: '#123524', // Default background color
@@ -73,7 +73,13 @@ export const darkTheme = createTheme({
 });
 
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState(()=>{
+    const savedTheme=localStorage.getItem('theme');
+    return savedTheme? JSON.parse(savedTheme) :'light';
+  });
+  useEffect(()=>{
+    localStorage.setItem('theme',JSON.stringify(theme));
+  },[theme]);
 
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));

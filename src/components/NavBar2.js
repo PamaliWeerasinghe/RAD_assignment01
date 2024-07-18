@@ -9,9 +9,9 @@ import { Link } from 'react-router-dom';
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
     backgroundColor: theme.palette.appBar.main,
     color: theme.palette.appBar.contrastText,
-    height: '80px',
+    height: '10%',
     position: 'fixed',
-    padding: '0 16px',
+    padding: '0 1%',
 }));
 
 const NavLinkStyled = styled(Link)(({ theme }) => ({

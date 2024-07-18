@@ -72,7 +72,7 @@ const ContactUs = () => {
     }}>
       <Section id="ContactUs">
         <Grid container style={{
-          padding:'0'
+          padding:'1%'
         }}>
           <Grid item xs={12} md={12} style={{marginBottom:'3%'}}>
           <Typography variant="h3">Contact Us</Typography>
