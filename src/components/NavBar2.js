@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
     backgroundColor: theme.palette.appBar.main,
     color: theme.palette.appBar.contrastText,
-    height: '10%',
+    height: '9%',
     position: 'fixed',
     padding: '0 1%',
 }));
@@ -48,11 +48,11 @@ const MenuLink = styled(Link)(({ theme }) => ({
 
 const LogoImage = styled('img')({
     height: '60px',
-    margin: '10px 0',
+    margin: '1px 0',
 });
 
 const CustomMenuIcon = styled(MenuIcon)({
-    fontSize: '40px', // Custom size
+    fontSize: '100%', // Custom size
 });
 
 const NavBar2 = () => {
@@ -100,7 +100,7 @@ const NavBar2 = () => {
             <Grid container alignItems="center" height={'80px'}>
                 <Grid item xs={6} md={4} display="flex" alignItems="center">
                     <LogoImage src="/plant.png" alt="ER Logo" />
-                    <Typography variant="h5" sx={{ display: { xs: 'none', md: 'block' }, marginLeft: '5px', marginTop: '7px' }}>
+                    <Typography variant="h5" sx={{ display: { xs: 'none', md: 'block' }, marginLeft: '5px', marginTop: '7px' }} style={{fontWeight:'bolder'}}>
                         GreenLeaf
                     </Typography>
                 </Grid>

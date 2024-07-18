@@ -10,9 +10,18 @@ import { Link } from 'react-router-dom';
 const Section = styled(Box)(({ theme }) => ({
     padding: theme.spacing(12, 0), // Default padding
     [theme.breakpoints.up('md')]: {
-        padding: theme.spacing(6, 0), // Padding for medium and up
+        padding: theme.spacing(16, 0), // Padding for medium and up
     },
 }));
+
+const Img = styled('img')({
+    width: '100%', // Adjusted for responsiveness
+    height: 'auto',
+    objectFit: 'fill',
+    itemAlign: 'center',
+    justifyContent: 'center',
+    margin:'auto'
+  });
 
 export default function Home() {
     const [name, setName] = React.useState('');
@@ -23,14 +32,16 @@ export default function Home() {
     const hours = new Date().getHours();
     const greeting = hours < 12 ? 'Morning' : hours < 18 ? 'Afternoon' : 'Evening';
     setWelcomeMessage(`Good ${greeting}!`);
+    }, []);
+    
 
+React.useEffect(()=>{
     const timer = setInterval(() => {
         setCurrentTime(new Date().toLocaleTimeString());
     }, 1000);
 
     return () => clearInterval(timer);
-    }, []);
-    
+});
     
     return (
         <Container maxWidth="false">
@@ -39,31 +50,19 @@ export default function Home() {
                     container 
                     rowSpacing={4}
                     sx={{
-                        
-                        // backgroundSize: '50%',
-                        backgroundRepeat: 'no-repeat',
-                        backgroundPosition: '100% 0',
-                        width: '100%',
-                        height: '100vh',
-                        //display: 'flex',
+                       
                     }}
                 >
                     <Grid 
                         item 
                         xs={12} 
                         md={6} 
-                        sx={{ 
-                            display: 'flex',
-                            flexDirection: 'column',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            p: 2,
-                            textAlign: 'center'
-                        }}
+                        style={{textAlign:'left'}}
                     >   
-                        <Typography variant="h6" gutterBottom>{welcomeMessage}</Typography>
-                        <Typography variant="h4">
-                            Welcome {name}!
+                    
+                        <Typography variant="h6"  style={{marginTop:'2%',fontWeight:'bold'}}>{welcomeMessage}</Typography>
+                        <Typography variant="h4" style={{marginTop:'3%',fontWeight:'bolder'}}>
+                            WELCOME {name}
                         </Typography>
                         <TextField 
                             id="outlined-basic" 
@@ -74,15 +73,15 @@ export default function Home() {
                             fullWidth
                             sx={{ my: 2 }}
                         />
-                        <Typography variant="h3">
+                        <Typography variant="h3" style={{marginTop:'2%',fontWeight:'bolder'}}>
                             GreenLeaf Gardens
                         </Typography>
-                        <Typography variant="h5">
+                        <Typography variant="h5" style={{marginTop:'2%',fontWeight:'bold'}}>
                             Your Go-To Destination For All Things Green and Beautiful!
                         </Typography>
-                        <Typography></Typography>
+                        <Typography style={{marginTop:'2%'}}>{currentTime}</Typography>
                         <Link to={"contact"}>
-                        <Button variant="contained" endIcon={<ArrowForwardIosIcon />} style={{width:'100%',marginTop:'5%'}}>
+                        <Button variant="contained" endIcon={<ArrowForwardIosIcon />} style={{width:'40%',marginTop:'5%'}}>
                           Contact Us
                         </Button>
                         </Link>
@@ -90,17 +89,17 @@ export default function Home() {
                     <Grid 
                         item 
                         xs={12} 
-                        md={6} 
-                        sx={{ 
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            backgroundImage: 'url(./blob.svg)',
+                        md={6}
+                        display={'flex'}
+                        sx={{backgroundImage: 'url(./blob.svg)',
+                            backgroundRepeat:'no-repeat',
+                             backgroundPosition:'54% 0',
+                            alignItems:'center',
+                            justifyContent:'center'
                         }}
                     >
-                        <img 
+                        <Img 
                             src="./plant.png" 
-                            style={{ width: '100%' }} 
                             sx={{ maxWidth: { xs: '200px', sm: '400px', md: '450px' } }}
                         />
                     </Grid>

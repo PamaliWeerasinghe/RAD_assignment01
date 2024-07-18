@@ -1,150 +1,154 @@
-import * as React from "react";
-import Grid from "@mui/material/Grid";
-import { Container, Typography,TextField } from "@mui/material";
-import { styled } from "@mui/material/styles";
-import Box from "@mui/material/Box";
-import { useFormik } from "formik";
-import { Email } from "@mui/icons-material";
-import Button from '@mui/material/Button';
-import * as Yup from 'yup';
+import React, { useState, useEffect } from 'react';
+import * as yup from 'yup';
+import { Box, Container, Typography, Button, TextField, Grid } from '@mui/material';
+import { styled } from '@mui/system';
 
+const Section = styled(Box)(({ theme }) => ({
+  padding: theme.spacing(10, 0),
+}));
 
-const ContactUs = () => {
-  const [inputNameValue,setNameValue]=React.useState('');
-  const [inputEmailValue,setEmailValue]=React.useState('');
-  const [textareaValue,setTextAreaValue]=React.useState('');
-  //validation
-  const formik=useFormik({
-    initialValues:{
-      Email:'',
-      Name:'',
-      Message:''
-    },
-    validationSchema:Yup.object({
-      Name:Yup.string().required('Required'),
-      Email:Yup.string().email('Invalid Email Address').required('Required'),
-      Message:Yup.string().required('Required')
-    }),
-    onSubmit:(values)=>{
-      console.log(values);
-    },
-  });
+const Img = styled('img')({
+  width: '100%', // Adjusted for responsiveness
+  height: 'auto',
+  objectFit: 'fill',
+  itemAlign: 'right',
+  justifyContent: 'center',
+  margin: 'auto'
+});
 
+const schema = yup.object().shape({
+  name: yup.string().required('Name is required'),
+  email: yup.string().email('Invalid email format').required('Email is required'),
+  message: yup.string().required('Message is required'),
+});
 
+const ContactForm = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [errors, setErrors] = useState({});
+  const [submissionMessage, setSubmissionMessage] = useState('');
 
+  useEffect(() => {
+    const formData = { name, email, message };
+    localStorage.setItem('contactForm', JSON.stringify(formData));
+  }, [name, email, message]);
 
+  const validateField = (name, value) => {
+    try {
+      yup.reach(schema, name).validateSync(value);
+      setErrors((prevErrors) => ({ ...prevErrors, [name]: null }));
+    } catch (error) {
+      setErrors((prevErrors) => ({ ...prevErrors, [name]: error.message }));
+    }
+  };
 
+  const handleChange = (field, value) => {
+    switch (field) {
+      case 'name':
+        setName(value);
+        validateField(field, value);
+        break;
+      case 'email':
+        setEmail(value);
+        validateField(field, value);
+        break;
+      case 'message':
+        setMessage(value);
+        validateField(field, value);
+        break;
+      default:
+        break;
+    }
+  };
 
-  const Section = styled(Box)(({ theme }) => ({
-    padding: theme.spacing(8, 0),
-  }));
-  const ProfileImg = styled("img")({
-    borderRadius: "100%",
-    margin: "1%",
-    width: "30%",
-    border: "solid",
-  });
-  const Img=styled('img')({
-    width:'100%',
-    //height:'auto',
-    //objectFit:'fill',
-    itemAlign:'right',
-    justifyContent:'center',
-    //margin:'auto'
-  });
-  const Input=styled("input")({
-    margin:'1%',
-    display:'block',
-    width:'100%'
-  });
-  const TextArea=styled("textarea")({
-    margin:'1%',
-    display:'block',
-    width:'100%'
-  });
-  
-
-
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const formData = { name, email, message };
+    schema.validate(formData, { abortEarly: false })
+      .then(() => {
+        console.log(formData);
+        setSubmissionMessage('Your message has been sent successfully!');
+        setErrors({});
+      })
+      .catch((validationErrors) => {
+        const formattedErrors = {};
+        validationErrors.inner.forEach((error) => {
+          formattedErrors[error.path] = error.message;
+        });
+        setErrors(formattedErrors);
+      });
+  };
 
   return (
-    <Container maxWidth={false} sx={{
-      //maxWidth: '1280'
-    }}>
-      <Section id="ContactUs">
-        <Grid container style={{
-          padding:'1%'
-        }}>
-          <Grid item xs={12} md={12} style={{marginBottom:'3%'}}>
-          <Typography variant="h3">Contact Us</Typography>
+    <form onSubmit={handleSubmit}>
+      <Box mb={2}>
+        <TextField
+          label="Name"
+          variant="outlined"
+          fullWidth
+          value={name}
+          onChange={(e) => handleChange('name', e.target.value)}
+          error={!!errors.name}
+          helperText={errors.name}
+        />
+      </Box>
+      <Box mb={2}>
+        <TextField
+          label="Email"
+          variant="outlined"
+          fullWidth
+          value={email}
+          onChange={(e) => handleChange('email', e.target.value)}
+          error={!!errors.email}
+          helperText={errors.email}
+        />
+      </Box>
+      <Box mb={2}>
+        <TextField
+          label="Message"
+          variant="outlined"
+          fullWidth
+          multiline
+          rows={3}
+          value={message}
+          onChange={(e) => handleChange('message', e.target.value)}
+          error={!!errors.message}
+          helperText={errors.message}
+        />
+      </Box>
+      <Button type="submit" variant="contained" color="primary">Send</Button>
+      {submissionMessage && <Typography variant="body1" color="success.main">{submissionMessage}</Typography>}
+    </form>
+  );
+};
 
+const Contact = () => {
+  return (
+    <Container maxWidth={'false'} sx={{ maxWidth: 1280 }} >
+      <Section id="contact">
+        <Typography variant="h4" gutterBottom style={{fontWeight:'bold'}} >Contact Us</Typography>
+        <Grid container spacing={4}>
+        <Grid item xs={12} md={5} display={'flex'}>
+            <Img src="contact.png" alt="contactimg" sx={{maxWidth : {xs : '300px', sm : '400px', md : '450px'}}} />
+          </Grid>
+          <Grid item xs={12} md={7}>
+            <Box mr={4}>
+              <Typography mb={4} variant="h6" gutterBottom>If you have any questions or inquiries, please feel free to reach out to us</Typography>
+              <ContactForm />
+              <Box mt={4} textAlign={{ xs: 'center', md: 'left' }}>
+                <Typography variant="h6" mb={1} style={{fontWeight:'bold'}}>For More Details</Typography>
+                <Typography variant="h6" style={{fontWeight:'bold'}} >Address: 123 Main Street, Negombo</Typography>
+                <Typography variant="h6" style={{fontWeight:'bold'}}>Phone: +94 76 483 4398</Typography>
+                <Typography variant="h6" style={{fontWeight:'bold'}}>Email: info@emeraldrentals.com</Typography>
+              </Box>
+            </Box>
           </Grid>
           
-         
         </Grid>
-        <Grid container rowSpacing={4} >
-          
-            <Grid item xs={12} md={4} display={"flex"} style={{
-              //border:'solid',
-              justifyContent:'center',
-              alignItems:'center'
-              
-              }}>
-              <Img src="./contact.png" maxWidth={"600px"}  style={{
-                
-              }}/>
-            </Grid>
-            
-            <Grid item xs={12} md={6} >
-            <form onSubmit={formik.handleSubmit}>
-              <label>
-              <TextField id="outlined-basic" label="Name" variant="outlined" color="success" style={{width:'100%',margin:'1%'}}
-                name="Name"{...formik.getFieldProps('Name')}
-              />
-              
-              </label>
-              {formik.touched.Name && formik.errors.Name ?(
-                <div style={{color:'red'}}>{formik.errors.Name}</div>
-              ):null}
-              
-
-              <label>
-              <TextField id="outlined-basic" label="Email Address" variant="outlined" color="success" style={{width:'100%',margin:'1%'}}
-              name="Email" {...formik.getFieldProps('Email')}
-              // value={inputEmailValue}
-              placeholder="Email"
-              // onChange={(e)=>{
-              //   setEmailValue(e.target.value);
-              // }}
-              />
-              </label>
-              {formik.touched.Email && formik.errors.Email?(
-                <div style={{color:'red'}}>{formik.errors.Email}</div>
-              ):null}
-              
-              <TextField id="outlined-basic" label="Message" variant="outlined" color="success" style={{width:'100%',margin:'1%'}}
-                //value={textareaValue}
-                multiline
-                rows={4}
-                name="Message" {...formik.getFieldProps('Message')}
-                placeholder="Message"
-                />
-                {formik.touched.Message && formik.errors.Message?(
-                <div style={{color:'red'}}>{formik.errors.Message}</div>
-              ):null}
-              
-              <Button variant="contained" color="success" style={{width:'30%',marginTop:'3%'}}>
-                    SUBMIT
-              </Button>
-              <h5>More Contact Details </h5>
-              <Typography style={{fontWeight:'bold'}}>greenleaf@gmail.com</Typography>
-              <Typography style={{fontWeight:'bold'}}>No.23/A, Main Street, Rajagiriya</Typography>
-              <Typography style={{fontWeight:'bold'}}>0115473210</Typography>
-              </form>
-            </Grid>
-            
-            </Grid>
       </Section>
     </Container>
   );
 };
-export default ContactUs;
+
+export default Contact;

@@ -28,7 +28,7 @@ const TeamMembers = () => {
   return (
     <Container maxWidth={"false"}>
       <Section id="about">
-        <Typography variant="h4">MEET OUR TEAM</Typography>
+        <Typography variant="h4" style={{fontWeight:'bolder'}}>MEET OUR TEAM</Typography>
 
         {/* </Grid> */}
         <Grid

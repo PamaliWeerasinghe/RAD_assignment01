@@ -12,10 +12,14 @@ import Availabilities from "./components/Availabilities";
 import TeamMembers from "./components/TeamMembers";
 import "./components/style.css";
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
+import { Padding } from "@mui/icons-material";
+import { Box} from '@mui/material';
 
 function App() {
   return (
-    <ThemeProvider>
+    
+        <ThemeProvider>
+      <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       <CssBaseline />
       <Router>
         
@@ -31,7 +35,10 @@ function App() {
         </Routes>
         <Footer />
       </Router>
+     </Box> 
     </ThemeProvider>
+    
+    
   );
 }
 

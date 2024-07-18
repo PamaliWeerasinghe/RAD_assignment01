@@ -29,7 +29,7 @@ const Availabilities = () => {
     <Container maxWidth={"false"}>
       <Section id="about">
 
-        <Typography variant="h4">AVAILABILITIES</Typography>
+        <Typography variant="h4" style={{fontWeight:'bolder'}}>AVAILABILITIES</Typography>
 
         <Grid
           container

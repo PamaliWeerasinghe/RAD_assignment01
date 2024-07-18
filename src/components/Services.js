@@ -39,7 +39,7 @@ const Services = () => {
           }}
         >
           <Grid item xs={12} md={6} rowSpacing={4}>
-            <Typography variant="h4">OUR SERVICES</Typography>
+            <Typography variant="h4" style={{fontWeight:'bolder',marginBottom:'8%'}}>OUR SERVICES</Typography>
             <Typography variant="body1">
               we offer a variety of services designed to help you cultivate and
               maintain a thriving green space. Whether you're a beginner looking

@@ -28,7 +28,7 @@ const About = () => {
   return (
     <Container maxWidth={"false"}>
       <Section id="about">
-        <Typography variant="h4">ABOUT US</Typography>
+        <Typography variant="h4" style={{fontWeight:'bolder',marginTop:'2%'}}>ABOUT US</Typography>
         <Grid
           container
           rowSpacing={4}
@@ -47,7 +47,7 @@ const About = () => {
             />
           </Grid>
           <Grid item xs={12} md={6}>
-            <Typography variant="h4">HISTORY</Typography>
+            <Typography variant="h4" style={{fontWeight:'bolder',marginBottom:'2%'}}>HISTORY</Typography>
             <Typography variant="body1" textAlign={"center"}>
               Founded in 2020, GreenLeaf Gardens started as a small, passionate
               project by a group of plant lovers who wanted to share their love

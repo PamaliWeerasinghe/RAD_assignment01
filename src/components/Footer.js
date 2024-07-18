@@ -11,9 +11,9 @@ const Footer = () => {
         mt: 'auto', 
         textAlign: 'center',
         width:'100%',
-        position:'fixed',
+        // position:'fixed-bottom',
         backgroundColor: (theme) =>
-          theme.palette.mode === 'light' ? theme.palette.grey[200] : '#02091d',
+          theme.palette.mode === 'light' ? theme.palette.grey[200] : '#568203',
         }}
     >
       <Container>
