@@ -46,11 +46,11 @@ const ContactUs = () => {
   });
   const Img=styled('img')({
     width:'100%',
-    height:'auto',
-    objectFit:'fill',
+    //height:'auto',
+    //objectFit:'fill',
     itemAlign:'right',
     justifyContent:'center',
-    margin:'auto'
+    //margin:'auto'
   });
   const Input=styled("input")({
     margin:'1%',
@@ -68,7 +68,7 @@ const ContactUs = () => {
 
   return (
     <Container maxWidth={false} sx={{
-      maxWidth: '1280'
+      //maxWidth: '1280'
     }}>
       <Section id="ContactUs">
         <Grid container style={{
@@ -82,7 +82,7 @@ const ContactUs = () => {
          
         </Grid>
         <Grid container rowSpacing={4} >
-          <form onSubmit={formik.handleSubmit}>
+          
             <Grid item xs={12} md={4} display={"flex"} style={{
               //border:'solid',
               justifyContent:'center',
@@ -95,7 +95,7 @@ const ContactUs = () => {
             </Grid>
             
             <Grid item xs={12} md={6} >
-              
+            <form onSubmit={formik.handleSubmit}>
               <label>
               <TextField id="outlined-basic" label="Name" variant="outlined" color="success" style={{width:'100%',margin:'1%'}}
                 name="Name"{...formik.getFieldProps('Name')}
@@ -132,15 +132,16 @@ const ContactUs = () => {
                 <div style={{color:'red'}}>{formik.errors.Message}</div>
               ):null}
               
-              <Button variant="contained" color="success">
+              <Button variant="contained" color="success" style={{width:'30%',marginTop:'3%'}}>
                     SUBMIT
               </Button>
-              
-              <Typography>greenleaf@gmail.com</Typography>
-              <Typography>No.23/A, Main Street, Rajagiriya</Typography>
-              <Typography>0115473210</Typography>
+              <h5>More Contact Details </h5>
+              <Typography style={{fontWeight:'bold'}}>greenleaf@gmail.com</Typography>
+              <Typography style={{fontWeight:'bold'}}>No.23/A, Main Street, Rajagiriya</Typography>
+              <Typography style={{fontWeight:'bold'}}>0115473210</Typography>
+              </form>
             </Grid>
-            </form>
+            
             </Grid>
       </Section>
     </Container>

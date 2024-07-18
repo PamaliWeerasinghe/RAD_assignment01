@@ -4,7 +4,8 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { Container, Typography, TextField } from '@mui/material';
 import Button from '@mui/material/Button';
-import SendIcon from '@mui/icons-material/Send';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import { Link } from 'react-router-dom';
 
 export default function Home() {
     const [name, setName] = React.useState('');
@@ -63,9 +64,11 @@ export default function Home() {
                         <Typography variant="h5">
                             Your Go-To Destination For All Things Green and Beautiful!
                         </Typography>
-                        <Button variant="contained" endIcon={<SendIcon />} style={{width:'40%',marginTop:'1%'}}>
-                          Our Services
+                        <Link to={"contact"}>
+                        <Button variant="contained" endIcon={<ArrowForwardIosIcon />} style={{width:'100%',marginTop:'5%'}}>
+                          Contact Us
                         </Button>
+                        </Link>
                     </Grid>
                     <Grid 
                         item 

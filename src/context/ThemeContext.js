@@ -18,7 +18,7 @@ export const lightTheme = createTheme({
       default: '#ffffff', // Default background color
     },
     appBar: {
-      main: '#02091d', // Custom AppBar color
+      main: '#85bb65', // Custom AppBar color
       contrastText: '#ffffff', // Text color for AppBar
     },
   },
